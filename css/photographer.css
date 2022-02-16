@@ -77,6 +77,18 @@ form input {
     border: none;
     border-radius: 5px;
 }
+
 .email{
     height: 170px;
+}
+
+.photograph-img img {
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+    border-radius: 100%; 
+}
+
+.info{
+    display: flex;
 }
