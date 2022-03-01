@@ -11,23 +11,22 @@
 
 <body>
   <header>
-    <img src="assets/images/logo.png" class="logo" />
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" /></a>
   </header>
 
   <main id="main">
     <div class="photograph-header">
       <div class="info"></div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button" id="contactButton" onclick="displayModal()">Contactez-moi</button>
       <div class="photograph-img"></div>
     </div>
   </main>
-
   <div id="contact_modal">
     <div class="modal">
 
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img id="closeModal" src="assets/icons/close.svg" onclick="closeModal()"/>
       </header>
 
       <section id="section">
@@ -52,9 +51,8 @@
   <section>
     <div class="content"></div>
   </section>
+  <script type="module" src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
-  <script src="/scripts/pages/photographer.js"></script>
-  <script src="scripts/factories/Photographer.js"></script>
 </body>
 
 </html>

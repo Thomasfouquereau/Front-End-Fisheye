@@ -1,62 +1,63 @@
-async function getPhotographersInfo() {
+async function getPhotographerInfo(userId) {
     try {
         const response = await fetch('/data/photographers.json');
         const data = await response.json();
-        //const id = await response.filter(function(data) {
-        //    return data.id == 243;
-        //});
-        return ({
-            photographers: [...data.photographers]
-        })
-    }catch{
+        const filterPhotographer = data.photographers.filter(function (photographer) {
+            return photographer.id === userId;
+        });
+        return filterPhotographer[0]
+    } catch {
         console.log('error')
     }
 }
 
-function displayData(photographers) {
-    const photographersInfo =  document.querySelector(".info");
-    const photographersImg =  document.querySelector(".photograph-img");
+//async function getmediaInfo() {
+//    try {
+//        const response = await fetch('/data/photographers.json');
+//        const data = await response.json();
+//        return ({
+//            photographers: [...data.media]
+//        })
+//    } catch {//
+//        console.log('error')
+//    }
+//}
+//image non fonctionnel voir pq????
+//et like avec incrémentation +1 et voir le svg like 
 
-    photographers.forEach((photographer) => {
-        let photographerModel = photographerInfoFactory(photographer);
-        const userInfoDOM = photographerModel.getUserInfoDOM();
-        const userImgDOM = photographerModel.getUserImgDOM();
-        photographersInfo.appendChild(userInfoDOM);
-        photographersImg.appendChild(userImgDOM);
-    });
-};
+function displayData(photographer) {
+    const photographersInfo = document.querySelector(".info");
+    const photographersImg = document.querySelector(".photograph-img");
+    const mediaContent = document.querySelector(".content");
+     //photographers.forEach((photographer) => {
+    const photographerModel = photographerFactory(photographer);
+    const userInfoDOM = photographerModel.getUserInfoDOM();
+    const userImgDOM = photographerModel.getUserImgDOM();
+    const usermediaDOM = photographerModel.getUserMediaDOM();
+    mediaContent.appendChild(usermediaDOM);
+    photographersInfo.appendChild(userInfoDOM);
+    photographersImg.appendChild(userImgDOM);
+    // });
+}
+//couper la fonction en deux ..media ..photographer
 
 async function initInfo() {
-    const { photographers } = await getPhotographersInfo();
-    displayData(photographers);
-};
-initInfo();
-
-async function getmediaInfo() {
     try {
-        const response = await fetch('/data/photographers.json');
-        const data = await response.json();
-        return ({
-            photographers: [...data.media]
-        })
-    }catch{
-        console.log('error')
+        const url = new URL(window.location.href);//en voire plus sur url search prarams
+        const params = new URLSearchParams(url.search);//--
+        const photographerId = Number(params.get("id"));//--
+        const selectedPhotographer = await getPhotographerInfo(photographerId);
+        displayData(selectedPhotographer);
+        console.log(url.searchParams.get("id"));
+    } catch (error) {
+        alert(error.message);
     }
+
+    // const { media } = await getmediaInfo();
+    // displayData(media)
 }
 
-function displayData(photographers) {
-    const mediaContent =  document.querySelector(".content");
+initInfo();
 
-    photographers.forEach((photographer) => {
-        let mediaModel = mediaFactory(photographer);
-        const usermediaDOM = mediaModel.getUserMediaDOM();
-        mediaContent.appendChild(usermediaDOM);
-    });
-};
 
-async function initMedia() {
-    const { photographers } = await getmediaInfo();
-    displayData(photographers);
-};
-initMedia();
-
+import { photographerFactory } from "../factories/photographer.js";

@@ -1,18 +1,21 @@
+export { photographerFactory };
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price } = data;
-
+    const { name, portrait, city, country, tagline, price, likes, title, id } = data;
     const picture = `assets/photographers/${portrait}`;
+    const [firstName] = name.split(' ')
+    const imageUser = `assets/images/${firstName}/${portrait}`;
 
+    //trouver comment integrer l id au lien avec une variable dans le lien
     function getUserCardDOM() {
-        const a =document.createElement('a')
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
+        const a = document.createElement('a')
+        const article = document.createElement('article');
+        const img = document.createElement('img');
         img.setAttribute("src", picture)
-        const h2 = document.createElement( 'h2' );
-        const h3  = document.createElement('h3');
+        const h2 = document.createElement('h2');
+        const h3 = document.createElement('h3');
         const p = document.createElement('p');
-        const span = document.createElement('span') 
-        a.href = 'photographer.html'       
+        const span = document.createElement('span');
+        a.href = 'photographer.html' + id;
         h2.textContent = name;
         h3.textContent = city + ", " + country;
         p.textContent = tagline;
@@ -25,49 +28,46 @@ function photographerFactory(data) {
         article.appendChild(span)
         return (a);
     }
-    return { name, picture, city, country, tagline, price, getUserCardDOM }
-}
-
-function  photographerInfoFactory (data){
-    const { name, city, country, tagline, portrait } = data;
-    const picture = `assets/photographers/${portrait}`;
 
     function getUserInfoDOM() {
-        const article = document.createElement( 'article' );
-        const h2 = document.createElement( 'h2' );
-        const h3  = document.createElement('h3');
-        const p = document.createElement('p');
-        h2.textContent = name;
-        h3.textContent = city + ", " + country;
-        p.textContent = tagline;
-        article.appendChild(h2);
-        article.appendChild(h3);
-        article.appendChild(p)
-        return (article)
+        const main = document.createElement('article');
+        const nom = document.createElement('h2');
+        const ville = document.createElement('h3');
+        const description = document.createElement('p');
+        nom.textContent = name;
+        ville.textContent = city + ", " + country;
+        description.textContent = tagline;
+        main.appendChild(nom);
+        main.appendChild(ville);
+        main.appendChild(description)
+        return (main)
     }
-    function getUserImgDOM(){
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        return(img)
-    }
-    return { name, city, country, tagline, picture, getUserInfoDOM, getUserImgDOM }
-}
 
-function mediaFactory (data){
-    const{title, image, likes} = data;
-    const imageUser = `assets/images/Marcel/${image}`;
+
+    function getUserImgDOM() {
+        const img = document.createElement('img');
+        img.setAttribute("src", imageUser);
+        return (img)
+    }
 
     function getUserMediaDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
+        const media = document.createElement('article');
+        const img = document.createElement('img');
         img.setAttribute("src", imageUser);
-        const span = document.createElement( 'span' );
-        const heart = document.createElement( 'img' );
-        span.textContent = title + likes + heart;
-        article.appendChild(img);
-        article.appendChild(span);
-        return (article)
+        const nomLike = document.createElement('span');
+        const heart = document.createElement('img');
+        nomLike.textContent = title + likes + heart;
+        media.appendChild(img);
+        media.appendChild(nomLike);
+        return (media)
     }
-    return {title, image, likes,getUserMediaDOM}
+
+    console.log(getUserMediaDOM)
+
+    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserInfoDOM, getUserImgDOM, getUserMediaDOM }
 }
+
+
+
+
 

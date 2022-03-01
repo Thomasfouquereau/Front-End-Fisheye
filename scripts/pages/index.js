@@ -18,11 +18,13 @@ function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-};
+}
 
 async function init() {
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();
+
+import { photographerFactory} from "../factories/photographer.js";
