@@ -1,11 +1,8 @@
 export { photographerFactory };
 function photographerFactory(data) {
-    const { name, portrait, city, country, tagline, price, likes, title, id } = data;
+    const { name, portrait, city, country, tagline, price, id } = data;
     const picture = `assets/photographers/${portrait}`;
-    const [firstName] = name.split(' ')
-    const imageUser = `assets/images/${firstName}/${portrait}`;
 
-    //trouver comment integrer l id au lien avec une variable dans le lien
     function getUserCardDOM() {
         const a = document.createElement('a')
         const article = document.createElement('article');
@@ -15,7 +12,7 @@ function photographerFactory(data) {
         const h3 = document.createElement('h3');
         const p = document.createElement('p');
         const span = document.createElement('span');
-        a.href = 'photographer.html' + id;
+        a.href = 'photographer.html?id=' + id;
         h2.textContent = name;
         h3.textContent = city + ", " + country;
         p.textContent = tagline;
@@ -30,7 +27,7 @@ function photographerFactory(data) {
     }
 
     function getUserInfoDOM() {
-        const main = document.createElement('article');
+        const main = document.createElement('section');
         const nom = document.createElement('h2');
         const ville = document.createElement('h3');
         const description = document.createElement('p');
@@ -43,31 +40,36 @@ function photographerFactory(data) {
         return (main)
     }
 
-
     function getUserImgDOM() {
         const img = document.createElement('img');
-        img.setAttribute("src", imageUser);
+        img.setAttribute("src", picture);
         return (img)
     }
 
-    function getUserMediaDOM() {
-        const media = document.createElement('article');
-        const img = document.createElement('img');
-        img.setAttribute("src", imageUser);
-        const nomLike = document.createElement('span');
-        const heart = document.createElement('img');
-        nomLike.textContent = title + likes + heart;
-        media.appendChild(img);
-        media.appendChild(nomLike);
-        return (media)
-    }
-
-    console.log(getUserMediaDOM)
-
-    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserInfoDOM, getUserImgDOM, getUserMediaDOM }
+    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserInfoDOM, getUserImgDOM, }
 }
+export { mediaFactory };
+function mediaFactory(data) {
+    const { title, likes, src} = data;
+    const likeIcon = `assets/icons/heart.svg`;
 
-
-
-
-
+    function getUserMediaDOM() {
+        const article = document.createElement('article')
+        const img = document.createElement('img' || 'video');
+        const icon = document.createElement('img')
+        const titles = document.createElement('p');
+        const like = document.createElement('button');
+        img.setAttribute("src", src)
+        icon.setAttribute("src", likeIcon)
+        const span = document.createElement('span')
+        titles.textContent= title
+        like.textContent = likes
+        like.appendChild(icon)
+        span.appendChild(titles)
+        span.appendChild(like)
+        article.appendChild(img)
+        article.appendChild(span)
+        return (article)
+    }
+    return { getUserMediaDOM }
+}

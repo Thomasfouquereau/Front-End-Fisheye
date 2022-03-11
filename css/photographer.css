@@ -8,7 +8,8 @@
     margin: 0 100px;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    justify-content: space-between
 }
 
 .contact_button {
@@ -88,8 +89,74 @@ form input {
     width: 200px;
     object-fit: cover;
     border-radius: 100%; 
+    margin-right: 50px;
 }
 
 .info{
     display: flex;
+    margin-left: 50px;
+}
+section h2{
+    font-size: 64px;
+    font-weight: 400;
+    color: #D3573C;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+section h3{
+    font-size: 24px;
+    font-weight: 400;
+    color: #901C1C;
+    margin-top: 0px;
+}
+
+section p {
+    font-weight: 400;
+    font-size: 18px;
+    color: #525252;
+}
+
+.content{
+    display: flex;
+    flex-direction: row;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 100px;
+}
+
+article img {
+    width: 350px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+article span {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+article p{
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+article button {
+    background-color: white;
+    border: none;
+    font-weight: 500;
+    font-size: 24px;
+    color: #901C1C;
+}
+
+article button img {
+    width:17.5px;
+    height: 18.5px;
+    margin-left: 10px;
 }
