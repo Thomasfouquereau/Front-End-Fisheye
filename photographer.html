@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 
 <head>
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -11,13 +11,13 @@
 
 <body>
   <header>
-    <a href="./index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <a href="./index.html"><img src="assets/images/logo.png" class="logo" alt="logo fishaye" /></a>
   </header>
 
   <main id="main">
     <div class="photograph-header">
       <div class="info"></div>
-      <button class="contact_button" id="contactButton" >Contactez-moi</button>
+      <button class="contact_button" id="contactButton">Contactez-moi</button>
       <div class="photograph-img"></div>
     </div>
   </main>
@@ -26,30 +26,49 @@
 
       <header>
         <h2>Contactez-moi</h2>
-        <img id="closeModal" src="assets/icons/close.svg" />
+        <h2 id="nameModal"></h2>
+        <button id="closeModal"><img src="assets/icons/close.svg" alt="croix"></button>
       </header>
 
       <section id="section">
+
         <form>
-          <div>
+          <div class="contained">
             <label>Prénom</label>
-            <input />
+            <input class="text-control" type="text" id="firstName" name="firstName"/>
             <label>Nom</label>
-            <input />
+            <input class="text-control" type="text" id="lastName" name="LastName" />
             <label>Email</label>
-            <input />
+            <input class="text-control" type="text" id="e-mail" name="e-mail" />
             <label>Votre message</label>
-            <input class="email" />
+            <input class="text-control-message" type="text" id="firstName" name="firstName" />
           </div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" id="submit" type="submit">Envoyer</button>
         </form>
 
       </section>
+
     </div>
   </div>
+
   <section>
+    <nav class="nav">
+
+      <label id="nav-text">Trier par</label>
+      <select name="nav-select" id="nav-select">
+        <option class="nav-option" id="nav-option-likes" value="Popularite">Popularite</option>
+        <option class="nav-option" id="nav-option-date" value="Date">Date</option>
+        <option class="nav-option" id="nav-option-title" value="Title">Title</option>
+      </select>
+
+    </nav>
     <div class="content"></div>
+    <div class="infoPhotographerDisplay">
+      <span class="likesInfoPhotographer"><p class="likesContainer"></p><img class="logoLikes" src="assets/icons/heart.svg" alt="logo like" /></span>
+    </div>
   </section>
-  <script type="module" src="/scripts/pages/photographer.js"></script>
+
+  <script type="module" src="/scripts/pages/photographer.js" ></script>
 </body>
+
 </html>

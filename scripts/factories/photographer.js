@@ -1,13 +1,26 @@
 export { photographerFactory };
+
+/**
+ * 
+ * @param {data} data 
+ * @returns constructeur pour les page html Media
+ */
+
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price, id } = data;
     const picture = `assets/photographers/${portrait}`;
 
+    /**
+     * 
+     * @returns {HTMLElement} pour le contenu pricipal de la page princioal
+     */
+
     function getUserCardDOM() {
-        const a = document.createElement('a')
+        const a = document.createElement('a');
         const article = document.createElement('article');
         const img = document.createElement('img');
-        img.setAttribute("src", picture)
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", name);
         const h2 = document.createElement('h2');
         const h3 = document.createElement('h3');
         const p = document.createElement('p');
@@ -17,14 +30,19 @@ function photographerFactory(data) {
         h3.textContent = city + ", " + country;
         p.textContent = tagline;
         span.textContent = price + "€/jour";
-        a.appendChild(article)
+        a.appendChild(article);
         article.appendChild(img);
         article.appendChild(h2);
         article.appendChild(h3);
-        article.appendChild(p)
-        article.appendChild(span)
+        article.appendChild(p);
+        article.appendChild(span);
         return (a);
     }
+
+    /**
+     * 
+     * @returns {HTMLElement} pour le contenu du bandeau de la page media
+     */
 
     function getUserInfoDOM() {
         const main = document.createElement('section');
@@ -36,40 +54,34 @@ function photographerFactory(data) {
         description.textContent = tagline;
         main.appendChild(nom);
         main.appendChild(ville);
-        main.appendChild(description)
-        return (main)
+        main.appendChild(description);
+        return (main);
     }
+
+    /**
+     * 
+     * @returns {HTMLElement} pour l image du bandeau de la page media
+     */
 
     function getUserImgDOM() {
         const img = document.createElement('img');
         img.setAttribute("src", picture);
-        return (img)
+        img.setAttribute("alt", name);
+        return (img);
     }
 
-    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserInfoDOM, getUserImgDOM, }
-}
-export { mediaFactory };
-function mediaFactory(data) {
-    const { title, likes, src} = data;
-    const likeIcon = `assets/icons/heart.svg`;
+    /**
+     * 
+     * @returns {HTMLElement} pour le contenu de la page media
+     */
 
-    function getUserMediaDOM() {
-        const article = document.createElement('article')
-        const img = document.createElement('img' || 'video');
-        const icon = document.createElement('img')
-        const titles = document.createElement('p');
-        const like = document.createElement('button');
-        img.setAttribute("src", src)
-        icon.setAttribute("src", likeIcon)
-        const span = document.createElement('span')
-        titles.textContent= title
-        like.textContent = likes
-        like.appendChild(icon)
-        span.appendChild(titles)
-        span.appendChild(like)
-        article.appendChild(img)
-        article.appendChild(span)
-        return (article)
+    function getUserPriceDOM() {
+        const prix = document.createElement('p');
+        prix.classList.add('info-prix');
+        prix.textContent = price + " €/jour";
+        return (prix);
     }
-    return { getUserMediaDOM }
+
+    return { name, picture, city, country, tagline, price, getUserCardDOM, getUserInfoDOM, getUserImgDOM, getUserPriceDOM }
 }
+
