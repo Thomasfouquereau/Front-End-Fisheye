@@ -11,7 +11,7 @@ let mediaObjList = [];
 
 async function getPhotographerInfo(userId) {
     try {
-        const response = await fetch('/data/photographers.json');
+        const response = await fetch('../data/photographers.json');
         const data = await response.json();
         const filterPhotographer = data.photographers.filter(function (photographer) {
             return photographer.id === userId;
@@ -24,7 +24,7 @@ async function getPhotographerInfo(userId) {
 
 async function getMediaInfo(userId) {
     try {
-        const response = await fetch('/data/photographers.json');
+        const response = await fetch('../data/photographers.json');
         const data = await response.json();
         const filterMedia = data.media.filter(function (media) {
             return media.photographerId === userId;
@@ -91,7 +91,7 @@ async function initInfo() {
 
     selectedMediaList.forEach((selectedMedia) => {
         const firstName = selectedPhotographer.name.split(" ")[0];
-        selectedMedia.src = `assets/images/${firstName}/${selectedMedia.image || selectedMedia.video}`;
+        selectedMedia.src = `..assets/images/${firstName}/${selectedMedia.image || selectedMedia.video}`;
         const mediaObj = mediaFactory(selectedMedia);
         mediaObjList.push(mediaObj);
         displayMedia(mediaObj);
