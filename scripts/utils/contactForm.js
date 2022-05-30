@@ -16,7 +16,7 @@ export function closeKeyboard(e) {
     const modal = document.getElementById("contact_modal");
     if (e.key === "Escape" || e.key === "Esc") {
         modal.style.display = "none";
-    document.forms[0].reset();
+        document.forms[0].reset();
     }
 }
 
@@ -56,12 +56,15 @@ form.addEventListener('submit', function (e) {
         myInputEmail.style.border = "2px solid green";
     }
 
-    if (firstNameValid && lastNameValid && emailValid ) { 
-       document.getElementById("submit").disabled = true;
-       const modal = document.getElementById("contact_modal");
-       console.log(`Firstname : ${myInput.value} ` + `Lastname : ${myInputlast.value} ` + `Email : ${myInputEmail.value} `);
-       modal.style.display = "none";
-       document.forms[0].reset();
+    const myInputMessage = document.querySelector(".text-control-message");
+
+
+    if (firstNameValid && lastNameValid && emailValid) {
+        document.getElementById("submit").disabled = true;
+        const modal = document.getElementById("contact_modal");
+        console.log(`Firstname : ${myInput.value} ` + `Lastname : ${myInputlast.value} ` + `Email : ${myInputEmail.value} ` + `Message : ${myInputMessage.value} `);
+        modal.style.display = "none";
+        document.forms[0].reset();
     } else {
         document.getElementById("submit").disabled = false;
     }
@@ -82,5 +85,4 @@ function isEmail(email) {
 }
 
 document.getElementById("submit").addEventListener("click", function () {
-    // document.forms[0].reset();
 });

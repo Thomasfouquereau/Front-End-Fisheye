@@ -1,6 +1,7 @@
 import { photographerFactory } from "../factories/photographer.js";
 import { mediaFactory } from "../factories/media.js";
 import { closeModal, displayModal, closeKeyboard } from "../utils/contactForm.js";
+import { getLikes } from "../utils/utils.js"
 
 document.getElementById("contactButton").addEventListener("click", displayModal)
 document.getElementById("closeModal").addEventListener("click", closeModal)
@@ -49,14 +50,8 @@ function displayData(photographer) {
 
 function displayMedia(media) {
     const mediaContent = document.querySelector(".content");
-    //const mediaInfo = document.querySelector(".infoPhotographerDisplay")
-    //const nameForModal = document.querySelector(".nameModal")
     const usermediaDOM = media.getUserMediaDOM();
-    // const userInfoDOM = mediaModel.getUserMediaInfoDOM();
-    //const userNameModalDOM = media.getUserNameModalDOM();
     mediaContent.appendChild(usermediaDOM);
-    // mediaInfo.appendChild(userInfoDOM)
-    //nameForModal.appendChild(userNameModalDOM)
 }
 
 async function initInfo() {
@@ -104,17 +99,3 @@ async function initInfo() {
     getLikes()
 }
 initInfo();
-
-function getLikes() {
-    const likesDomList = [...document.querySelectorAll(".btn-like")];
-    let sum = 0;
-    likesDomList.forEach((domElem) => {
-        const likeadd = parseInt(domElem.textContent);
-        sum = sum + likeadd;
-    }); 
-const likesContainer = document.querySelector(".likesContainer")
-likesContainer.innerHTML = sum;
-}
-
-
-

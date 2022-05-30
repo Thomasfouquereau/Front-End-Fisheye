@@ -1,3 +1,5 @@
+import { getLikes } from "../utils/utils.js"
+
 export { mediaFactory };
 
 /**
@@ -7,8 +9,11 @@ export { mediaFactory };
  */
 
 function mediaFactory(data) {
-    let { title, likes, src, video, date} = data;
+    let { title, likes, src, video, date } = data;
     const likeIcon = `assets/icons/heart.svg`;
+    const previousSrc = `assets/icons/LBprevious.svg`;
+    const nextSrc = `assets/icons/LBnext.svg`;
+    const closeSrc = `assets/icons/LBclose.svg`;
     let like;
 
     /**
@@ -34,11 +39,13 @@ function mediaFactory(data) {
             mp4.setAttribute("src", src);
             mp4.controls = true;
             article.appendChild(mp4);
+            mp4.classList.add('btn-mp4');
         } else {
             const img = document.createElement('img');
             img.setAttribute("src", src);
             img.setAttribute("alt", title);
             article.appendChild(img);
+            img.classList.add('btn-img');
         }
 
         icon.setAttribute("src", likeIcon);
@@ -58,17 +65,6 @@ function mediaFactory(data) {
             lightBox.classList.add('lightbox');
             const close = document.createElement('button');
             close.classList.add('close');
-            close.textContent = "X";
-            const previous = document.createElement('button');
-            previous.classList.add('previous');
-            previous.textContent = "<";
-            const next = document.createElement('button');
-            next.classList.add('next');
-            next.textContent = ">";
-            const titleLightBox = document.createElement('p');
-            titleLightBox.classList.add('title-lightbox');
-            titleLightBox.textContent = title;
-
             if (video) {
                 const mp4 = document.createElement('video');
                 mp4.setAttribute("src", src);
@@ -82,11 +78,30 @@ function mediaFactory(data) {
                 img.classList.add('img-ligthbox');
             }
 
-            lightBox.appendChild(previous);
+            const closeIcon = document.createElement('img');
+            closeIcon.setAttribute("src", closeSrc);
+            close.appendChild(closeIcon);
+            const previous = document.createElement('button');
+            previous.classList.add('previous');
+            const previousImg = document.createElement('img');
+            previousImg.setAttribute("src", previousSrc);
+            previousImg.setAttribute("alt", "previous");
+            const next = document.createElement('button');
+            next.classList.add('next');
+            const nextImg = document.createElement('img');
+            nextImg.setAttribute("src", nextSrc);
+            nextImg.setAttribute("alt", "next");
+            const titleLightBox = document.createElement('p');
+            titleLightBox.classList.add('title-lightbox');
+            titleLightBox.textContent = title;
+            next.appendChild(nextImg);
+            previous.appendChild(previousImg);
+            lightBox.insertBefore(previous, lightBox.childNodes[0]);
+            
             lightBox.appendChild(next);
             lightBox.appendChild(close);
             lightBox.appendChild(titleLightBox);
-            
+
             document.body.appendChild(lightBox);
             previous.focus();
 
@@ -95,21 +110,21 @@ function mediaFactory(data) {
              */
 
             close.addEventListener("click", function () {
-                lightBox.remove(); 
+                lightBox.remove();
             });
 
             function KeyboardListener(e) {
-                    if (e.key === "Escape" || e.key === "Esc") {
-                        lightBox.remove();
-                    } else if (e.key === "ArrowLeft" || e.key === "Left") {
-                        document.removeEventListener("keydown", KeyboardListener)
-                        previous.click();
-                    } else if (e.key === "ArrowRight" || e.key === "Right") {
-                        document.removeEventListener("keydown", KeyboardListener)
-                        next.click();
-                    }
+                if (e.key === "Escape" || e.key === "Esc") {
+                    lightBox.remove();
+                } else if (e.key === "ArrowLeft" || e.key === "Left") {
+                    document.removeEventListener("keydown", KeyboardListener)
+                    previous.click();
+                } else if (e.key === "ArrowRight" || e.key === "Right") {
+                    document.removeEventListener("keydown", KeyboardListener)
+                    next.click();
+                }
             }
-            document.addEventListener("keydown", KeyboardListener );
+            document.addEventListener("keydown", KeyboardListener);
 
             /**
              * @description: affiche la lightbox suivante
@@ -117,9 +132,9 @@ function mediaFactory(data) {
 
             next.addEventListener("click", function () {
                 lightBox.remove();
-                
+
                 if (article.nextElementSibling !== null) {
-                    
+
                     article.nextElementSibling.click();
                 } else {
                     article.parentNode.children[0].click();
@@ -133,12 +148,12 @@ function mediaFactory(data) {
             previous.addEventListener("click", function () {
                 lightBox.remove();
                 if (article.previousElementSibling !== null) {
-                    
+
                     article.previousElementSibling.click();
                 } else {
                     article.parentNode.children[article.parentNode.children.length - 1].click();
                 }
-                
+
             });
         })
 
@@ -150,37 +165,15 @@ function mediaFactory(data) {
             e.stopImmediatePropagation();
             likes += 1;
             like.innerHTML = likes + '<img src="assets/icons/heart.svg" alt="heart">';
+            getLikes();
         })
 
         return (article);
     }
-     function getLikeDom () {
-        const like = document.createElement('p')
-        like.classList.add('info-like');
-        const icon = document.createElement('img');
-        icon.setAttribute("src", likeIcon);
-        like.textContent = 
-        like.appendChild(icon);
-        return (like)
-    }
 
-    /**
-     * 
-     * @returns {object}
-     */
-
-    function getUserMediaInfoDOM() {
-        const like = document.createElement('p')
-        like.classList.add('info-like');
-        const icon = document.createElement('img');
-        icon.setAttribute("src", likeIcon);
-        like.textContent =
-        like.appendChild(icon);
-        return (like)
-    }
 
     function getLikeBtn() {
         return like
     }
-    return { getUserMediaDOM, getUserMediaInfoDOM, title, likes, src, video, date, getLikeBtn, getLikeDom }
-}
+    return { getUserMediaDOM, title, likes, src, video, date, getLikeBtn }
+} 

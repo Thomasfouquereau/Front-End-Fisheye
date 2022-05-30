@@ -8,7 +8,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.699);
 }
 
 .photograph-header {
@@ -34,7 +34,7 @@
     cursor: pointer;
 }
 
-.text-control{
+.text-control {
     font-size: 25px;
 }
 
@@ -64,6 +64,7 @@
     background-color: #901c1c00;
     transform: translateX(-30px);
 }
+
 .modal header button img {
     width: 42px;
     height: 42px;
@@ -102,7 +103,7 @@ form input {
     border-radius: 5px;
 }
 
-.text-control-message{
+.text-control-message {
     height: 170px;
 }
 
@@ -110,16 +111,16 @@ form input {
     height: 200px;
     width: 200px;
     object-fit: cover;
-    border-radius: 100%; 
+    border-radius: 100%;
     margin-right: 50px;
 }
 
-.info{
+.info {
     display: flex;
     margin-left: 50px;
 }
 
-section h2{
+section h2 {
     font-size: 64px;
     font-weight: 400;
     color: #D3573C;
@@ -127,7 +128,7 @@ section h2{
     margin-top: 0px;
 }
 
-section h3{
+section h3 {
     font-size: 24px;
     font-weight: 400;
     color: #901C1C;
@@ -140,7 +141,7 @@ section p {
     color: #525252;
 }
 
-.content{
+.content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -154,21 +155,21 @@ section p {
     border: none;
 }
 
-button img {
+.btn-img {
     width: 350px;
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
 }
 
-button video {
+.btn-mp4 {
     width: 350px;
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
- }
+}
 
-.container{
+.container {
     display: flex;
     align-items: baseline;
     max-width: 350px;
@@ -176,7 +177,7 @@ button video {
     position: relative;
 }
 
-.title-img{
+.title-img {
     color: #901C1C;
     font-weight: 400;
     font-size: 24px;
@@ -197,14 +198,14 @@ button video {
     right: 0;
 }
 
-.img-like{
-    width:17.5px;
+.img-like {
+    width: 17.5px;
     height: 18.5px;
     margin-left: 10px;
 }
 
-.btn-like img{
-    width:17.5px;
+.btn-like img {
+    width: 17.5px;
     height: 18.5px;
     margin-left: 10px;
 }
@@ -212,14 +213,14 @@ button video {
 .info-photographer {
     display: flex;
     justify-content: space-around;
-    background-color:#DB8876;
+    background-color: #DB8876;
     width: 376px;
     color: #000000;
     font-weight: 500;
-    border-radius:5px;
-    position:sticky;
+    border-radius: 5px;
+    position: sticky;
     right: 30px;
-    bottom:-5px
+    bottom: -5px
 }
 
 .info-like {
@@ -228,23 +229,23 @@ button video {
     color: #000000;
 }
 
-.info-like img{
+.info-like img {
     margin-left: 3px;
     width: 17px;
 }
 
-.info-prix{
+.info-prix {
     font-size: 24px;
     color: #000000;
 }
 
-.infoPhotographerDisplay{
+.infoPhotographerDisplay {
     display: flex;
     justify-content: space-around;
     width: 376px;
     height: 89px;
     background-color: #DB8876;
-    border-radius:5px;
+    border-radius: 5px;
     font-size: 24px;
     color: #000000;
     position: fixed;
@@ -252,14 +253,14 @@ button video {
     right: 30px;
 }
 
-.likesContainer{
+.likesContainer {
     font-size: 24px;
     color: #000000;
     font-weight: 500;
     margin-right: 6px;
 }
 
-.likesInfoPhotographer{
+.likesInfoPhotographer {
     display: flex;
     font-size: 24px;
     color: #000000;
@@ -267,71 +268,73 @@ button video {
 
 }
 
-.logoLikes{
+.logoLikes {
     width: 17.5px;
     height: 18.35px;
 }
 
-.nav{
+.nav {
     display: flex;
     margin-left: 100px;
     margin-top: 40px;
     align-items: center;
 }
 
-#nav-text{
+#nav-text {
     margin-right: 10px;
-    font-size:18px;
+    font-size: 18px;
 }
 
-#nav-select{
+#nav-select {
     background-color: #911C1C;
     color: #FFFF;
     width: 170px;
-    height:69px;
-    font-size:18px;
+    height: 69px;
+    font-size: 18px;
+    border-radius: 5px;
 }
 
-.nav-option{
+.nav-option {
     width: 170px;
     margin-bottom: 20px;
     border-radius: 0%;
 }
 
-#menu{
-    text-align:left;
+#menu {
+    text-align: left;
     border: none;
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
     position: relative;
-    color:white;
-    background-color: #911C1C;;
-    font-size:18px;
+    color: white;
+    background-color: #911C1C;
+    ;
+    font-size: 18px;
     font-weight: 700;
     margin: none;
     box-sizing: border-box;
 }
 
-#menuItem{
+#menuItem {
     list-style: none;
-    padding:5px;
+    padding: 5px;
 }
 
-.nav-item{
+.nav-item {
     border-top: 1px solid white;
-    padding:10px;
+    padding: 10px;
 }
 
-.fa-solid{
+.fa-solid {
     margin-left: 40px;
 }
 
-.icon-arrow{ 
+.icon-arrow {
     display: block;
     transform: rotate(-90deg);
-    width:10px;
-    position: absolute; 
+    width: 10px;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 5px;
@@ -343,7 +346,7 @@ button video {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 255, 255, 0.63);
     z-index: 9999;
     display: flex;
     align-items: center;
@@ -355,11 +358,11 @@ button video {
     font-size: 24px;
     font-weight: 400;
     color: #D3573C;
-    bottom: 200px;
-    left: 885px;
+    bottom: 10%;
+    left: calc(((100% - 1050px) / 2));
 }
 
-.img-ligthbox{
+.img-ligthbox {
     width: 100%;
     height: 100%;
     max-width: 1050px;
@@ -370,18 +373,8 @@ button video {
 
 .close {
     position: absolute;
-    top: 220px;
-    right: 830px;
-    color: #DB8876;
-    background-color: #00000000;
-    cursor: pointer;
-    border: none;
-    font-size: 30px;
-}
-.previous {
-    position: absolute;
-    top: 700px;
-    left: 830px;
+    top: 15%;
+    right: calc(((100% - 1050px) / 2) - 60px);
     color: #DB8876;
     background-color: #00000000;
     cursor: pointer;
@@ -389,10 +382,24 @@ button video {
     font-size: 30px;
 }
 
+.previous {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: calc(((100% - 1050px) / 2) - 60px);
+    color: #DB8876;
+    background-color: #00000000;
+    cursor: pointer;
+    border: none;
+    width: 30px;
+    height: 48px;
+}
+
 .next {
     position: absolute;
-    top: 700px;
-    right: 830px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(((100% - 1050px) / 2) - 60px);
     color: #DB8876;
     background-color: #00000000;
     cursor: pointer;
