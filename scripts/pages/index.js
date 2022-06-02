@@ -1,3 +1,8 @@
+/**
+ * 
+ * @returns {Photographer} recupere les données de l'utilisateur dans le json
+ */
+
 async function getPhotographers() {
     try{
         const response = await fetch('../data/photographers.json')
@@ -10,6 +15,11 @@ async function getPhotographers() {
     }
 }
 
+/**
+ * 
+ * @param {*} photographers 
+ */
+
 function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -19,6 +29,10 @@ function displayData(photographers) {
         photographersSection.appendChild(userCardDOM);
     });
 }
+
+/**
+ * affiche les données de l'utilisateur
+ */
 
 async function init() {
     const { photographers } = await getPhotographers();

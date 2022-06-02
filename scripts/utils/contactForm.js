@@ -70,14 +70,32 @@ form.addEventListener('submit', function (e) {
     }
 });
 
+/**
+ * function donne un cadre de validation au formulaire
+ * @param {*} val 
+ * @returns la taille du champs minimum
+ */
+
 
 function isFirstName(val) {
     return val.trim().length >= 2
 }
 
+/**
+ * function donne un cadre de validation au formulaire
+ * @param {*} val 
+ * @returns la taille du champs minimum
+ */
+
 function isLastName(val) {
     return val.trim().length >= 2
 }
+
+/**
+ * function donne un cadre de validation au formulaire
+ * @param {*} email 
+ * @returns la taille du champs minimum et de la validité de l'email
+ */
 
 function isEmail(email) {
     const regex = /\S+@\S+\.\S+/;

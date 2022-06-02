@@ -9,6 +9,12 @@ document.getElementById("closeModal").addEventListener("keydown", closeKeyboard)
 
 let mediaObjList = [];
 
+/**
+ * recuperation des données de l'utilisateur pour afficher les informations des photographers
+ * @param {*} userId 
+ * @returns filterPhotographer
+ */
+
 async function getPhotographerInfo(userId) {
     try {
         const response = await fetch('../data/photographers.json');
@@ -22,6 +28,12 @@ async function getPhotographerInfo(userId) {
     }
 }
 
+/**
+ * recuperation des données de l'utilisateur pour afficher les informations des media
+ * @param {*} userId 
+ * @returns filterMedia
+ */
+
 async function getMediaInfo(userId) {
     try {
         const response = await fetch('../data/photographers.json');
@@ -34,6 +46,11 @@ async function getMediaInfo(userId) {
         console.log('error')
     }
 }
+
+/**
+ * affiche les données du photographe
+ * @param {*} photographer 
+ */
 
 function displayData(photographer) {
     const photographersInfo = document.querySelector(".info");
@@ -54,6 +71,10 @@ function displayMedia(media) {
     mediaContent.appendChild(usermediaDOM);
 }
 
+/**
+ * ajout l id du media dans l url pour afficher la page de media 
+ */
+
 async function initInfo() {
     const url = new URL(window.location.href);
     const params = new URLSearchParams(url.search);
@@ -65,6 +86,10 @@ async function initInfo() {
     }
     displayData(selectedPhotographer);
     const selectedMediaList = await getMediaInfo(photographerId);
+
+    /**
+     * systeme de tri des media par date ou likes ou title 
+     */
 
     const triLikes = document.getElementById("nav-select")
     triLikes.addEventListener("change", function (e) {
@@ -89,9 +114,13 @@ async function initInfo() {
         })
     })
 
+    /**
+     * affichage des media
+     */
+
     selectedMediaList.forEach((selectedMedia) => {
         const firstName = selectedPhotographer.name.split(" ")[0];
-        selectedMedia.src = `..assets/images/${firstName}/${selectedMedia.image || selectedMedia.video}`;
+        selectedMedia.src = `../assets/images/${firstName}/${selectedMedia.image || selectedMedia.video}`;
         const mediaObj = mediaFactory(selectedMedia);
         mediaObjList.push(mediaObj);
         displayMedia(mediaObj);
